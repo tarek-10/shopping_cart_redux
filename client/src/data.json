@@ -1,0 +1,34 @@
+[
+  {
+    "id": "id1",
+    "title": "shoes",
+    "imageUrl": "/images/shoes.jpg",
+    "desc": "nike orignal shoes",
+    "price": 32,
+    "sizes": ["S", "M"]
+  },
+  {
+    "id": "id2",
+    "title": "labtop",
+    "imageUrl": "/images/apple2.jpg",
+    "desc": "labtop apple for You",
+    "price": 36,
+    "sizes": ["XL", "L"]
+  },
+  {
+    "id": "id3",
+    "title": "platStation",
+    "imageUrl": "/images/playstation5.jpg",
+    "desc": "Latest version of playStation",
+    "price": 50,
+    "sizes": ["XS", "XXL"]
+  },
+  {
+    "id": "id4",
+    "title": "niacin",
+    "imageUrl": "/images/nicine.jpg",
+    "desc": "viatmin b3 for your heart",
+    "price": 44,
+    "sizes": ["M", "L"]
+  }
+]

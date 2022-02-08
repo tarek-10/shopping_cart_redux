@@ -1,0 +1,38 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.layout {
+  display: grid;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+  height: 100%;
+  grid-template-rows: 50px 1fr 50px;
+}
+
+#root {
+  height: 100vh;
+}
+
+main {
+  grid-area: main;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.wrapper .productWrapper {
+  width: 68%;
+}
+
+.wrapper .mainFilter {
+  width: 30%;
+}

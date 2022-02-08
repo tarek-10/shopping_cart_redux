@@ -1,0 +1,44 @@
+.checkout-form {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding: 30px;
+    width: 100%;
+    background-color: #ddd;
+}
+
+.checkout-form form {
+    width: 60%;
+    margin: auto;
+}
+
+.checkout-form form>div {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.form-div input {
+    height: 40px;
+    border: 1px solid #c0c0c0;
+    padding: 5px 10px;
+}
+
+.form-div .form-btn {
+    height: 40px;
+    display: block;
+    border: 0;
+    padding: 4px;
+    background-color: #2a5ea2;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.checkout-form span {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
