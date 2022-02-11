@@ -18,13 +18,13 @@ export default function App() {
   const handlerFitlerBySize = (e) => {
     setSize(e.target.value);
 
-    if (e.target.value == "ALL") {
+    if (e.target.value === "ALL") {
       setProducts(data);
     } else {
       let productsClone = [...products];
 
       let newProducts = productsClone.filter(
-        (p) => p.sizes.indexOf(e.target.value) != -1
+        (p) => p.sizes.indexOf(e.target.value) !== -1
       );
 
       setProducts(newProducts);
@@ -38,9 +38,9 @@ export default function App() {
     setSort(order);
     let productClone = [...products];
     let newProducts = productClone.sort(function (a, b) {
-      if (order == "Lowest") {
+      if (order === "Lowest") {
         return a.price - b.price;
-      } else if (order == "Hightest") {
+      } else if (order === "Hightest") {
         return b.price - a.price;
       } else {
         return a.id < b.id ? 1 : -1;
@@ -55,7 +55,7 @@ export default function App() {
     const cartItemsClone = [...cartItems];
     let isProductExist = false;
     cartItemsClone.forEach((p) => {
-      if (p.id == product.id) {
+      if (p.id === product.id) {
         p.qty++;
         isProductExist = true;
       }
@@ -70,7 +70,7 @@ export default function App() {
   //remove product from cart//
   const removeFromCart = (product) => {
     let cartItemClone = [...cartItems];
-    let newItem = cartItemClone.filter((p) => p.id != product.id);
+    let newItem = cartItemClone.filter((p) => p.id !== product.id);
     setCartItems(newItem);
   };
   //end
