@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import CheckoutForm from "../CheckoutForm/CheckoutForm";
 import Bounce from "react-reveal/Bounce";
 import "./Cart.css";
-function Cart({ cartItems, removeFromCart }) {
+import { connect } from "react-redux";
+import { RemoveFromCart } from "../../Store/action/cart";
+function Cart(props) {
   const [showForm, setShowForm] = useState(false);
   const [value, setValue] = useState("");
 
@@ -24,13 +26,13 @@ function Cart({ cartItems, removeFromCart }) {
   return (
     <div className="cart-wrapper">
       <div className="cart-title">
-        {cartItems.length == 0 ? (
+        {props.cartItems.length == 0 ? (
           "Empty Cart"
         ) : (
-          <p> There is {cartItems.length} Item In Your Cart</p>
+          <p> There is {props.cartItems.length} Item In Your Cart</p>
         )}
       </div>
-      {cartItems.map((item) => (
+      {props.cartItems.map((item) => (
         <Bounce bottom cascade>
           <div className="cart-items" key={item.id}>
             <img src={item.imageUrl} alt={item.title} />
@@ -41,18 +43,21 @@ function Cart({ cartItems, removeFromCart }) {
                 <p>price:${item.price}</p>
               </div>
             </div>
-            <button className="cart-btn" onClick={() => removeFromCart(item)}>
+            <button
+              className="cart-btn"
+              onClick={() => props.RemoveFromCart(item)}
+            >
               Remove
             </button>
           </div>
         </Bounce>
       ))}
-      {cartItems.length > 0 && (
+      {props.cartItems.length > 0 && (
         <div className="cart-footer">
           <div className="total">
             Total : $
-            {cartItems.reduce((acc, item) => {
-              return acc + item.price;
+            {props.cartItems.reduce((acc, item) => {
+              return acc + +item.price;
             }, 0)}
           </div>
           <button className="cart-btn" onClick={() => setShowForm(true)}>
@@ -70,4 +75,11 @@ function Cart({ cartItems, removeFromCart }) {
   );
 }
 
-export default Cart;
+export default connect(
+  (state) => {
+    return {
+      cartItems: state.cart.cartItems,
+    };
+  },
+  { RemoveFromCart }
+)(Cart);

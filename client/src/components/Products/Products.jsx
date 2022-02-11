@@ -4,6 +4,7 @@ import "./Products.css";
 import Bounce from "react-reveal/Bounce";
 import { connect } from "react-redux";
 import { fetchProducts } from "../../Store/action/product";
+import { addToCart } from "../../Store/action/cart";
 function Products(props) {
   console.log(props);
   const [product, setProduct] = useState("");
@@ -48,5 +49,5 @@ export default connect(
   (state) => {
     return { products: state.products.filterProducts };
   },
-  { fetchProducts }
+  { fetchProducts, addToCart }
 )(Products);
