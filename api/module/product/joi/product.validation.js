@@ -7,7 +7,7 @@ module.exports = {
             title: Joi.string().required(),
             desc: Joi.string().required(),
             price: Joi.string().required(),
-            sizes: Joi.string().required()
+            sizes: Joi.string().required().trim()
         }),
         file: Joi.object().required()
     }
