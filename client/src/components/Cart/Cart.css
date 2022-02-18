@@ -51,3 +51,61 @@
     font-size: 25px;
     color: #2a5ea2;
 }
+
+/* modal */
+.close-modal {
+    cursor: pointer;
+    position: absolute;
+    top: 1px;
+    right: 3px;
+    font-size: 17px;
+    font-size: bold;
+}
+
+.modal-items {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-items .modaltitle {
+    text-align: center;
+    text-transform: capitalize;
+    color: green;
+    font-weight: 800;
+}
+
+.modal-items table {
+    border: 1px solid #c0c0c0;
+}
+
+.modal-items table tr {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3px;
+    border-bottom: 1px solid #c0c0c0;
+}
+
+.modal-items table tr:last-of-type {
+    border-bottom: 0;
+}
+
+.modal-items table tr .td-t {
+    font-weight: 600;
+}
+
+.modal-items table tr .td-r {
+    color: #101111;
+    margin: 3px 0;
+}
+
+.modal-items table tr .td-r .modal-data {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-items table tr .td-r .modal-data .modal-data-desc {
+    color: #0a346b;
+}
