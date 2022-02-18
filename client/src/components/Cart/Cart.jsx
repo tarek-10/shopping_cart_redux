@@ -4,24 +4,28 @@ import Bounce from "react-reveal/Bounce";
 import "./Cart.css";
 import { connect } from "react-redux";
 import { RemoveFromCart } from "../../Store/action/cart";
+import Modal from "react-modal";
 function Cart(props) {
   const [showForm, setShowForm] = useState(false);
   const [value, setValue] = useState("");
-
+  const [order, setOrder] = useState(false);
+  const closeModal = () => {
+    setOrder(false);
+  };
   const handleChange = (e) => {
     setValue((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
     }));
   };
-  const order = {
-    name: value.name,
-    email: value.email,
-  };
-  console.log(order);
+
   const submittOrder = (e) => {
     e.preventDefault();
-    console.log(value);
+    const order = {
+      name: value.name,
+      email: value.email,
+    };
+    setOrder(order);
   };
   return (
     <div className="cart-wrapper">
@@ -32,6 +36,51 @@ function Cart(props) {
           <p> There is {props.cartItems.length} Item In Your Cart</p>
         )}
       </div>
+      {/* Model */}
+      <Modal isOpen={order} onRequestClose={closeModal}>
+        <span onClick={closeModal} className="close-modal">
+          &times;
+        </span>
+        <div className="modal-items">
+          <p className="modaltitle">order done successfully...!</p>
+          <table>
+            <tr>
+              <td className="td-t">Name:</td>
+              <td className="td-r">{order.name}</td>
+            </tr>
+            <tr>
+              <td className="td-t">Email:</td>
+              <td className="td-r">{order.email}</td>
+            </tr>
+            <tr>
+              <td className="td-t">Total:</td>
+              <td className="td-r">
+                $
+                {props.cartItems.reduce((a, p) => {
+                  return a + +p.price;
+                }, 0)}
+              </td>
+            </tr>
+
+            <tr>
+              <td className="td-t">Selected Items :</td>
+              <td className="td-r">
+                {props.cartItems.map((p) => (
+                  <div className="modal-data">
+                    <p className="modal-data-desc">
+                      Number Of Products: {p.qty}
+                    </p>
+                    <p className="modal-data-desc">
+                      Title Of Products: {p.title}
+                    </p>
+                    <hr />
+                  </div>
+                ))}
+              </td>
+            </tr>
+          </table>
+        </div>
+      </Modal>
       {props.cartItems.map((item) => (
         <Bounce bottom cascade>
           <div className="cart-items" key={item.id}>
