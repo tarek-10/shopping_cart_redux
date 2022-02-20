@@ -1,7 +1,8 @@
 const express = require("express");
 const connection = require("./configration/config");
 const {
-    productRouter
+    productRouter,
+    orderRouter
 } = require("./router/app.router");
 
 const app = express();
@@ -15,6 +16,7 @@ connection();
 app.use(cors());
 app.use("/uploads", express.static("uploads"));
 app.use(productRouter);
+app.use(orderRouter);
 
 app.listen(port, () => {
     console.log(`App Listening Successfully At Port ${port}`);
